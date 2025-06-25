@@ -20,7 +20,7 @@ const Chat: React.FC = () => {
     const stored =
       typeof window !== "undefined" ? localStorage.getItem("username") : null;
     if (stored) setUsername(stored);
-  });
+  }, []);
 
   // Scroll to bottom on new message
   // useEffect(() => {
