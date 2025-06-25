@@ -15,9 +15,9 @@ export const Chat: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Scroll to bottom on new message
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  // useEffect(() => {
+  //   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  // }, [messages]);
 
   // Fetch messages from API
   const fetchMessages = async () => {
@@ -53,14 +53,14 @@ export const Chat: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-violet-900 to-indigo-950 text-gray-100">
-      <div className="w-full max-w-lg bg-gray-950/90 border border-violet-900 rounded-xl shadow-2xl p-0 flex flex-col">
+    <div className="flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 via-violet-900 to-indigo-950 text-gray-100 flex-1 w-full">
+      <div className="w-full max-w-lg bg-gray-950/90 border border-violet-900 rounded-xl shadow-2xl p-0 flex flex-col h-full">
         <div className="bg-gradient-to-r from-violet-800 via-indigo-900 to-gray-900 rounded-t-xl px-6 py-4 flex items-center border-b border-violet-900">
           <span className="text-2xl font-mono font-bold text-violet-300 tracking-wide drop-shadow">
             # skibidi-chatge
           </span>
         </div>
-        <div className="flex-1 overflow-y-auto px-6 py-4 space-y-2 scrollbar-thin scrollbar-thumb-violet-700 scrollbar-track-gray-900">
+        <div className="flex-1 overflow-y-auto px-6 py-4 space-y-2 scrollbar-thin scrollbar-thumb-violet-700 scrollbar-track-gray-900 max-h-[50vh]">
           {messages.length === 0 && (
             <div className="text-gray-500 text-center py-8">
               Aucun message pour l’instant…
