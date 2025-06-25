@@ -10,8 +10,7 @@ export default function Footer() {
       className="
         border-t-2 border-violet-700
         flex flex-col sm:flex-row justify-between items-center text-center
-        w-full max-w-4xl mx-auto px-4 py-4 text-violet-100 bg-gradient-to-r from-gray-950 via-violet-950 to-indigo-950
-        mt-8
+        w-full max-w-8xl mx-auto px-4 py-4 text-violet-100 bg-gradient-to-r from-gray-950 via-violet-950 to-indigo-950
       ">
       <div className="mb-2 sm:mb-0">
         <span>
