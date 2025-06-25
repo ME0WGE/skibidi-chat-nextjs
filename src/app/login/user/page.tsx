@@ -4,9 +4,9 @@ export default function Page() {
   return (
     <div className="flex-1 flex flex-col items-center justify-center text-center text-white">
       <h1 className="text-4xl">Welcome to SkiBiDi Chatge!</h1>
-      <p className="italic">
+      {/* <p className="italic">
         Feel free to{" "}
-        <Link href="/login/user/register">
+        <Link href="/login/user">
           <span className="text-green-400 font-bold cursor-pointer">
             create an account
           </span>
@@ -14,13 +14,19 @@ export default function Page() {
         <span className="text-white font-bold cursor-pointer">
           {" "}
           <span className="cursor-auto">/ </span>{" "}
-          <Link href="/login" className="text-red-400">
+          <Link href="/login/user" className="text-red-400">
             {" "}
             Login
           </Link>
         </span>
         <br />
         or <br /> to join the chat as a{" "}
+        <Link href="/chat">
+          <span className="text-blue-400 font-bold cursor-pointer">Guest</span>!
+        </Link>
+      </p> */}
+      <p>
+        Join the Chat as a{" "}
         <Link href="/chat">
           <span className="text-blue-400 font-bold cursor-pointer">Guest</span>!
         </Link>

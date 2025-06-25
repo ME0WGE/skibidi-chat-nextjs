@@ -12,21 +12,11 @@ type Message = {
 const Chat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const [username, setUsername] = useState("Guest");
-
-  useEffect(() => {
-    const stored =
-      typeof window !== "undefined" ? localStorage.getItem("username") : null;
-    if (stored) setUsername(stored);
-  }, []);
-
-  // Scroll to bottom on new message
-  // useEffect(() => {
-  //   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  // }, [messages]);
-
+  // --- Gestion DB (API) ---
   // Fetch messages from API
   const fetchMessages = async () => {
     const response = await fetch("/api/messages");
@@ -43,7 +33,7 @@ const Chat: React.FC = () => {
 
   const sendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input) return;
+    if (!input || !username) return;
 
     await fetch("/api/messages", {
       method: "POST",
@@ -59,11 +49,23 @@ const Chat: React.FC = () => {
     setInput("");
     fetchMessages();
   };
+  // --- Fin gestion DB (API) ---
 
   return (
     <div className="flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 via-violet-900 to-indigo-950 text-gray-100 flex-1 w-full">
       <div className="w-full max-w-lg bg-gray-950/90 border border-violet-900 rounded-xl shadow-2xl p-0 flex flex-col h-full">
-        <div className="bg-gradient-to-r from-violet-800 via-indigo-900 to-gray-900 rounded-t-xl px-6 py-4 flex items-center border-b border-violet-900">
+        {/* Username input */}
+        <div className="w-full px-6 py-4 border-b border-violet-900 bg-gray-950/80 rounded-t-xl flex items-center gap-2">
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your username"
+            className="flex-1 px-4 py-2 rounded-lg bg-gray-900 text-violet-200 placeholder-violet-400 border border-violet-800 focus:outline-none focus:ring-2 focus:ring-violet-600 font-mono"
+            autoComplete="off"
+          />
+        </div>
+        <div className="bg-gradient-to-r from-violet-800 via-indigo-900 to-gray-900 px-6 py-4 flex items-center border-b border-violet-900">
           <span className="text-2xl font-mono font-bold text-violet-300 tracking-wide drop-shadow">
             # skibidi-chatge
           </span>
