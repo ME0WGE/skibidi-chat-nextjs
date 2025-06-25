@@ -12,7 +12,7 @@ export default function Footer() {
         flex flex-col sm:flex-row justify-between items-center text-center
         w-full max-w-8xl mx-auto px-4 py-4 text-violet-100 bg-gradient-to-r from-gray-950 via-violet-950 to-indigo-950
       ">
-      <div className="mb-2 sm:mb-0">
+      <div className="mb-2 sm:mb-0 text-lg">
         <span>
           © 2025 Made With
           <span className="mx-1 text-violet-500 text-xl align-middle">
@@ -55,14 +55,14 @@ export default function Footer() {
             href="https://www.linkedin.com/in/kamil-baldyga/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-indigo-400 text-2xl mr-2 hover:text-violet-400 transition">
+            className="text-indigo-400 text-4xl mr-2 hover:text-violet-400 transition">
             <FontAwesomeIcon icon={faLinkedin} />
           </a>
           <a
             href="https://www.github.com/ME0WGE"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-indigo-400 text-2xl hover:text-violet-400 transition">
+            className="text-indigo-400 text-4xl hover:text-violet-400 transition">
             <FontAwesomeIcon icon={faGithub} />
           </a>
         </li>
