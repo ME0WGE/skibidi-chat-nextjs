@@ -63,7 +63,7 @@ export const Chat: React.FC = () => {
         <div className="flex-1 overflow-y-auto px-6 py-4 space-y-2 scrollbar-thin scrollbar-thumb-violet-700 scrollbar-track-gray-900 max-h-[50vh]">
           {messages.length === 0 && (
             <div className="text-gray-500 text-center py-8">
-              Aucun message pour l’instant…
+              &lt;LoveYourself /&gt;
             </div>
           )}
           {messages.map((msg) => (
