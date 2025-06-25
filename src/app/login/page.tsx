@@ -1,48 +1,43 @@
 "use client";
-
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardHeader,
-  CardTitle,
   CardContent,
   CardFooter,
+  CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { Label } from "@radix-ui/react-label";
 import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setMessage(""); // reset message
-
+    setMessage("");
     try {
-      const res = await fetch("/api/register", {
+      const res = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
-
       if (res.ok) {
-        setMessage("Registration successful! Redirecting...");
-        setUsername("");
-        setPassword("");
-        setTimeout(() => {
-          router.push("/login");
-        }, 1200);
+        setMessage("Login successful!");
+        // Stocke le username dans localStorage
+        localStorage.setItem("username", username);
+        router.push("/chat");
       } else {
         const data = await res.json();
-        setMessage(data.error || "Registration failed.");
+        setMessage(data.error || "Login failed.");
       }
     } catch {
-      setMessage(`An error occurred.`);
+      setMessage("An error occurred.");
     }
   };
 
@@ -51,7 +46,7 @@ export default function Page() {
       <Card className="w-full max-w-md shadow-xl">
         <form onSubmit={handleSubmit}>
           <CardHeader>
-            <CardTitle className="text-2xl text-violet-600">Register</CardTitle>
+            <CardTitle className="text-2xl text-violet-600">Login</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
@@ -78,7 +73,12 @@ export default function Page() {
               />
             </div>
             {message && (
-              <div className="text-sm text-center mt-2 text-red-400">
+              <div
+                className={`text-sm text-center mt-2 ${
+                  message === "Login successful!"
+                    ? "text-green-400"
+                    : "text-red-400"
+                }`}>
                 {message}
               </div>
             )}
@@ -87,7 +87,7 @@ export default function Page() {
             <Button
               type="submit"
               className="w-full bg-violet-700 hover:bg-violet-800 mt-5">
-              Register
+              Login
             </Button>
           </CardFooter>
         </form>

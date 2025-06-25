@@ -14,6 +14,14 @@ export const Chat: React.FC = () => {
   const [input, setInput] = useState<string>("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  const [username, setUsername] = useState("Guest");
+
+  useEffect(() => {
+    const stored =
+      typeof window !== "undefined" ? localStorage.getItem("username") : null;
+    if (stored) setUsername(stored);
+  });
+
   // Scroll to bottom on new message
   // useEffect(() => {
   //   messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -44,7 +52,7 @@ export const Chat: React.FC = () => {
       },
       body: JSON.stringify({
         content: input,
-        sender: "User",
+        sender: username,
       }),
     });
 

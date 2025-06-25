@@ -11,6 +11,14 @@ export default function Page() {
             create an account
           </span>
         </Link>
+        <span className="text-white font-bold cursor-pointer">
+          {" "}
+          <span className="cursor-auto">/ </span>{" "}
+          <Link href="/login" className="text-red-400">
+            {" "}
+            Login
+          </Link>
+        </span>
         <br />
         or <br /> to join the chat as a{" "}
         <Link href="/">
