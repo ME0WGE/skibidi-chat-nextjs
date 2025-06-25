@@ -21,7 +21,7 @@ export default function Page() {
         </span>
         <br />
         or <br /> to join the chat as a{" "}
-        <Link href="/">
+        <Link href="/chat">
           <span className="text-blue-400 font-bold cursor-pointer">Guest</span>!
         </Link>
       </p>
