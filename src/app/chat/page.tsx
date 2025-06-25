@@ -9,7 +9,7 @@ type Message = {
   timestamp: string;
 };
 
-export const Chat: React.FC = () => {
+const Chat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState<string>("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -109,4 +109,6 @@ export const Chat: React.FC = () => {
   );
 };
 
-export default Chat;
+export default function Page() {
+  return <Chat />;
+}

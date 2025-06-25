@@ -5,10 +5,10 @@ export const UserSlice = createSlice({
   initialState: [],
 
   reducers: {
-    createUser: (state, action) => {},
-    deleteUser: (state, action) => {},
+    // createUser: (state, action) => {},
+    // deleteUser: (state, action) => {},
   },
 });
 
-export const { createUser, deleteUser } = UserSlice.actions;
+// export const { createUser, deleteUser } = UserSlice.actions;
 export const userReducer = UserSlice.reducer;
