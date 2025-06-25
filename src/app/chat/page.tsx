@@ -27,7 +27,7 @@ const Chat: React.FC = () => {
   // Polling: refresh messages every 2 seconds
   useEffect(() => {
     fetchMessages();
-    const interval = setInterval(fetchMessages, 2000); // 2s
+    const interval = setInterval(fetchMessages, 500); // 2s
     return () => clearInterval(interval);
   }, []);
 
